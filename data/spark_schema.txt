@@ -1,0 +1,9 @@
+Spark DataFrame Schema:
+  date: TimestampType()
+  Gold: DoubleType()
+  WTI: DoubleType()
+  DXY: DoubleType()
+  Gold_WTI_ratio: DoubleType()
+  Gold_DXY_ratio: DoubleType()
+
+Records: 1508

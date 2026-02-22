@@ -1,0 +1,124 @@
+======================================================================
+  DU AN ANTIGRAVITY: PHAN TICH LIEN THI TRUONG & DU BAO GIA VANG
+  SO SANH 2 GIAI DOAN: 2014-2019 vs 2020-2025
+======================================================================
+
+======================================================================
+  GIAI DOAN: 2014-2019 (Pre-COVID)
+======================================================================
+   So ban ghi: 1506
+   Khoang thoi gian: 2019-12-30 -> 2014-01-02
+
+   Ma tran Pearson:
+        Gold     WTI     DXY
+Gold  1.0000  0.1976 -0.1123
+WTI   0.1976  1.0000 -0.8520
+DXY  -0.1123 -0.8520  1.0000
+
+   Granger Causality:
+   DXY -> Gold: p=0.088031 (lag=3) -> KHONG
+   WTI -> Gold: p=0.115924 (lag=1) -> KHONG
+
+   So sanh Mo hinh:
+          Model      MAE     RMSE  MAPE (%)
+XGBoost (Train)   0.7694   0.9826    0.0625
+Prophet (Train) 143.9517 181.2362   11.4053
+ XGBoost (Test)  53.0213  81.7037    3.5797
+ Prophet (Test) 150.2274 168.0869   12.1034
+
+   Tham so XGBoost toi uu:
+   n_estimators: 512
+   max_depth: 4
+   learning_rate: 0.04559247946220637
+   subsample: 0.7549744258181302
+   colsample_bytree: 0.6714608483262927
+   min_child_weight: 10
+   reg_alpha: 0.20519029402098227
+   reg_lambda: 0.0005854508840556546
+   gamma: 0.0018929182856619873
+
+   Top 10 Features:
+   Gold_MA_5                      0.3059
+   Gold_MAX_5                     0.2313
+   Gold_lag_1                     0.2132
+   Gold_MIN_5                     0.1880
+   Gold_MAX_10                    0.0439
+   Gold_return_1d                 0.0044
+   Gold_DXY_ratio                 0.0040
+   Gold_return_5d                 0.0038
+   Gold_MIN_10                    0.0013
+   month                          0.0006
+
+======================================================================
+  GIAI DOAN: 2020-2025 (Post-COVID)
+======================================================================
+   So ban ghi: 1508
+   Khoang thoi gian: 2025-12-30 -> 2020-01-02
+
+   Ma tran Pearson:
+        Gold     WTI     DXY
+Gold  1.0000 -0.0728  0.1014
+WTI  -0.0728  1.0000  0.4654
+DXY   0.1014  0.4654  1.0000
+
+   Granger Causality:
+   DXY -> Gold: p=0.077396 (lag=2) -> KHONG
+   WTI -> Gold: p=0.151994 (lag=10) -> KHONG
+
+   So sanh Mo hinh:
+          Model      MAE      RMSE  MAPE (%)
+XGBoost (Train)   0.3987    0.5400    0.0210
+Prophet (Train) 931.6637 1175.2390   40.7405
+ XGBoost (Test) 629.4450  810.0337   17.0701
+ Prophet (Test) 698.1007  809.0181   37.9362
+
+   Tham so XGBoost toi uu:
+   n_estimators: 859
+   max_depth: 9
+   learning_rate: 0.0757828719100493
+   subsample: 0.9155718246798378
+   colsample_bytree: 0.6199559912425594
+   min_child_weight: 7
+   reg_alpha: 1.944722371875608
+   reg_lambda: 7.444527649457148e-08
+   gamma: 0.4830322467704961
+
+   Top 10 Features:
+   Gold_MAX_21                    0.6965
+   Gold_lag_1                     0.0840
+   Gold_lag_2                     0.0631
+   Gold_MA_5                      0.0387
+   Gold_lag_3                     0.0356
+   Gold_MAX_5                     0.0280
+   Gold_MA_21                     0.0199
+   Gold_MIN_5                     0.0111
+   Gold_DXY_ratio                 0.0084
+   quarter                        0.0024
+
+======================================================================
+  SO SANH LIEN GIAI DOAN
+======================================================================
+
+  Tuong quan Pearson:
+      Pair  2014-2019  2020-2025   Change
+Gold ↔ WTI     0.1976    -0.0728 ↓ 0.2704
+Gold ↔ DXY    -0.1123     0.1014 ↑ 0.2137
+ WTI ↔ DXY    -0.8520     0.4654 ↑ 1.3174
+
+  Granger Causality:
+  Relation 2014-2019 p-val 2014-2019 2020-2025 p-val 2020-2025
+DXY → Gold             nan     KHÔNG             nan     KHÔNG
+WTI → Gold             nan     KHÔNG             nan     KHÔNG
+
+  Hieu suat Mo hinh (Test Set):
+  Model   Metric  2014-2019  2020-2025             Change
+XGBoost      MAE    53.0213   629.4450 ↑ Tệ hơn (1087.2%)
+XGBoost     RMSE    81.7037   810.0337  ↑ Tệ hơn (891.4%)
+XGBoost MAPE (%)     3.5797    17.0701  ↑ Tệ hơn (376.9%)
+Prophet      MAE   150.2274   698.1007  ↑ Tệ hơn (364.7%)
+Prophet     RMSE   168.0869   809.0181  ↑ Tệ hơn (381.3%)
+Prophet MAPE (%)    12.1034    37.9362  ↑ Tệ hơn (213.4%)
+
+======================================================================
+  Ghi chu: Tai lieu nay phuc vu cho muc dich hoc thuat va nghien cuu
+======================================================================

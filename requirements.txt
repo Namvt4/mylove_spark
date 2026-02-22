@@ -1,0 +1,11 @@
+yfinance>=0.2.31
+pandas>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+optuna>=3.4.0
+prophet>=1.1.5
+statsmodels>=0.14.0
+pyspark>=3.5.0
