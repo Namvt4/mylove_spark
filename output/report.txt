@@ -7,7 +7,7 @@
   GIAI DOAN: 2014-2019 (Pre-COVID)
 ======================================================================
    So ban ghi: 1506
-   Khoang thoi gian: 2019-12-30 -> 2014-01-02
+   Khoang thoi gian: 2014-01-02 -> 2019-12-30
 
    Ma tran Pearson:
         Gold     WTI     DXY
@@ -16,44 +16,44 @@ WTI   0.1976  1.0000 -0.8520
 DXY  -0.1123 -0.8520  1.0000
 
    Granger Causality:
-   DXY -> Gold: p=0.088031 (lag=3) -> KHONG
-   WTI -> Gold: p=0.115924 (lag=1) -> KHONG
+   DXY -> Gold: p=0.038177 (lag=7) -> CO
+   WTI -> Gold: p=0.284415 (lag=2) -> KHONG
 
    So sanh Mo hinh:
           Model      MAE     RMSE  MAPE (%)
-XGBoost (Train)   0.7694   0.9826    0.0625
-Prophet (Train) 143.9517 181.2362   11.4053
- XGBoost (Test)  53.0213  81.7037    3.5797
- Prophet (Test) 150.2274 168.0869   12.1034
+XGBoost (Train)   0.0525   0.0738    0.0043
+Prophet (Train)  13.2405  16.8193    1.0710
+ XGBoost (Test)  53.7626  82.5480    3.6314
+ Prophet (Test) 208.8051 249.9288   14.6332
 
    Tham so XGBoost toi uu:
-   n_estimators: 512
-   max_depth: 4
-   learning_rate: 0.04559247946220637
-   subsample: 0.7549744258181302
-   colsample_bytree: 0.6714608483262927
+   n_estimators: 834
+   max_depth: 9
+   learning_rate: 0.08845962714763461
+   subsample: 0.7719855637013674
+   colsample_bytree: 0.6924682514293193
    min_child_weight: 10
-   reg_alpha: 0.20519029402098227
-   reg_lambda: 0.0005854508840556546
-   gamma: 0.0018929182856619873
+   reg_alpha: 1.1126051553660963
+   reg_lambda: 0.007813768148255804
+   gamma: 2.3915770749838366e-06
 
    Top 10 Features:
-   Gold_MA_5                      0.3059
-   Gold_MAX_5                     0.2313
-   Gold_lag_1                     0.2132
-   Gold_MIN_5                     0.1880
-   Gold_MAX_10                    0.0439
-   Gold_return_1d                 0.0044
-   Gold_DXY_ratio                 0.0040
-   Gold_return_5d                 0.0038
-   Gold_MIN_10                    0.0013
-   month                          0.0006
+   Gold_MAX_5                     0.3765
+   Gold_lag_1                     0.2784
+   Gold_MIN_5                     0.1508
+   Gold_MA_5                      0.1388
+   Gold_MAX_10                    0.0454
+   Gold_return_1d                 0.0024
+   Gold_return_5d                 0.0022
+   Gold_DXY_ratio                 0.0019
+   Gold_MIN_10                    0.0016
+   Gold_MAX_21                    0.0003
 
 ======================================================================
   GIAI DOAN: 2020-2025 (Post-COVID)
 ======================================================================
    So ban ghi: 1508
-   Khoang thoi gian: 2025-12-30 -> 2020-01-02
+   Khoang thoi gian: 2020-01-02 -> 2025-12-30
 
    Ma tran Pearson:
         Gold     WTI     DXY
@@ -62,38 +62,38 @@ WTI  -0.0728  1.0000  0.4654
 DXY   0.1014  0.4654  1.0000
 
    Granger Causality:
-   DXY -> Gold: p=0.077396 (lag=2) -> KHONG
-   WTI -> Gold: p=0.151994 (lag=10) -> KHONG
+   DXY -> Gold: p=0.084520 (lag=4) -> KHONG
+   WTI -> Gold: p=0.033291 (lag=2) -> CO
 
    So sanh Mo hinh:
-          Model      MAE      RMSE  MAPE (%)
-XGBoost (Train)   0.3987    0.5400    0.0210
-Prophet (Train) 931.6637 1175.2390   40.7405
- XGBoost (Test) 629.4450  810.0337   17.0701
- Prophet (Test) 698.1007  809.0181   37.9362
+          Model      MAE     RMSE  MAPE (%)
+XGBoost (Train)   0.7583   0.9797    0.0399
+Prophet (Train)  22.5764  29.1700    1.1977
+ XGBoost (Test) 628.5943 809.6279   17.0427
+ Prophet (Test) 255.0142 345.2025    7.0301
 
    Tham so XGBoost toi uu:
-   n_estimators: 859
-   max_depth: 9
-   learning_rate: 0.0757828719100493
-   subsample: 0.9155718246798378
-   colsample_bytree: 0.6199559912425594
-   min_child_weight: 7
-   reg_alpha: 1.944722371875608
-   reg_lambda: 7.444527649457148e-08
-   gamma: 0.4830322467704961
+   n_estimators: 200
+   max_depth: 6
+   learning_rate: 0.15662991253215905
+   subsample: 0.9456158634915254
+   colsample_bytree: 0.7738325579364396
+   min_child_weight: 9
+   reg_alpha: 1.3511622777954544e-07
+   reg_lambda: 0.0003652034276904558
+   gamma: 2.9146881945087928e-08
 
    Top 10 Features:
-   Gold_MAX_21                    0.6965
-   Gold_lag_1                     0.0840
-   Gold_lag_2                     0.0631
-   Gold_MA_5                      0.0387
-   Gold_lag_3                     0.0356
-   Gold_MAX_5                     0.0280
-   Gold_MA_21                     0.0199
-   Gold_MIN_5                     0.0111
-   Gold_DXY_ratio                 0.0084
-   quarter                        0.0024
+   Gold_MAX_21                    0.7515
+   Gold_lag_1                     0.1159
+   Gold_MA_21                     0.0336
+   Gold_lag_2                     0.0332
+   Gold_MAX_5                     0.0251
+   Gold_MA_5                      0.0188
+   Gold_DXY_ratio                 0.0076
+   Gold_MIN_5                     0.0043
+   Gold_MAX_10                    0.0028
+   Gold_MA_10                     0.0016
 
 ======================================================================
   SO SANH LIEN GIAI DOAN
@@ -112,12 +112,12 @@ WTI → Gold             nan     KHÔNG             nan     KHÔNG
 
   Hieu suat Mo hinh (Test Set):
   Model   Metric  2014-2019  2020-2025             Change
-XGBoost      MAE    53.0213   629.4450 ↑ Tệ hơn (1087.2%)
-XGBoost     RMSE    81.7037   810.0337  ↑ Tệ hơn (891.4%)
-XGBoost MAPE (%)     3.5797    17.0701  ↑ Tệ hơn (376.9%)
-Prophet      MAE   150.2274   698.1007  ↑ Tệ hơn (364.7%)
-Prophet     RMSE   168.0869   809.0181  ↑ Tệ hơn (381.3%)
-Prophet MAPE (%)    12.1034    37.9362  ↑ Tệ hơn (213.4%)
+XGBoost      MAE    53.7626   628.5943 ↑ Tệ hơn (1069.2%)
+XGBoost     RMSE    82.5480   809.6279  ↑ Tệ hơn (880.8%)
+XGBoost MAPE (%)     3.6314    17.0427  ↑ Tệ hơn (369.3%)
+Prophet      MAE   208.8051   255.0142   ↑ Tệ hơn (22.1%)
+Prophet     RMSE   249.9288   345.2025   ↑ Tệ hơn (38.1%)
+Prophet MAPE (%)    14.6332     7.0301  ↓ Tốt hơn (52.0%)
 
 ======================================================================
   Ghi chu: Tai lieu nay phuc vu cho muc dich hoc thuat va nghien cuu

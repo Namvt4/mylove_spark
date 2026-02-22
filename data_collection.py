@@ -110,10 +110,13 @@ def preprocess_spark(spark_df):
 def spark_to_pandas(spark_df):
     """Chuyển Spark DataFrame về pandas cho model training."""
     print("  [PySpark] Converting Spark DataFrame to pandas...")
-    merged = spark_df.select("date", "Gold", "WTI", "DXY").toPandas()
+    # QUAN TRỌNG: orderBy trước khi toPandas để đảm bảo thứ tự thời gian
+    merged = spark_df.select("date", "Gold", "WTI", "DXY").orderBy("date").toPandas()
     merged["date"] = pd.to_datetime(merged["date"])
     merged = merged.set_index("date")
+    merged = merged.sort_index()  # Double-check sort
     merged.index.name = "Date"
+    print(f"    Date range: {merged.index[0].date()} -> {merged.index[-1].date()}")
     return merged
 
 
@@ -129,6 +132,7 @@ def prepare_prophet_format(merged, target="Gold"):
 
     df_prophet = df_prophet[cols_keep]
     df_prophet["ds"] = pd.to_datetime(df_prophet["ds"])
+    df_prophet = df_prophet.sort_values("ds").reset_index(drop=True)  # Đảm bảo thứ tự
     return df_prophet
 
 
